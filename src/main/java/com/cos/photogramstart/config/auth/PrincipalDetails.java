@@ -2,6 +2,7 @@ package com.cos.photogramstart.config.auth;
 
 import com.cos.photogramstart.domain.user.User;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
+@Setter
 public class PrincipalDetails implements UserDetails {
 
     private User user;

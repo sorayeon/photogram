@@ -10,7 +10,8 @@ function update(userId) {
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         dataType: "json"
     }).done(res => {
-        console.log("update 성공");
+        console.log("update 성공", res);
+        location.href = `/user/${userId}`;
     }).fail(error => {
         console.log("update 실패");
     });
