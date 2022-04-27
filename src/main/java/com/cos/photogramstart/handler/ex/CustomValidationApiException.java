@@ -7,7 +7,11 @@ import java.util.Map;
 @Getter
 public class CustomValidationApiException extends RuntimeException {
 
-    private final Map<String, String> errorMap;
+    private Map<String, String> errorMap;
+
+    public CustomValidationApiException(String message) {
+        super(message);
+    }
 
     public CustomValidationApiException(String message, Map<String, String> errorMap) {
         super(message);
