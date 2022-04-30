@@ -21,7 +21,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
@@ -31,10 +31,10 @@ spring:
       enabled: true
       max-file-size: 2MB
 
-  security:
-    user:
-      name: test
-      password: 1234   
+#  security:
+#    user:
+#      name: test
+#      password: 1234
 
 file:
-  path: C:/workspace/springbootwork/upload/
+  path: /Users/sorayeon/IdeaProjects/upload/

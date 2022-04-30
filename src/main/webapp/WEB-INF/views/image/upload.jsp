@@ -18,7 +18,7 @@
                 <!--사진업로드 로고 end-->
                 
                 <!--사진업로드 Form-->
-                <form class="upload-form" >
+                <form class="upload-form" action="/image" method="post" enctype="multipart/form-data">
                     <input  type="file" name="file"  onchange="imageChoose(this)"/>
                     <div class="upload-img">
                         <img src="/images/person.jpeg" alt="" id="imageUploadPreview" />
@@ -29,7 +29,7 @@
                    		 <input type="text" placeholder="사진설명" name="caption">
                         <button class="cta blue">업로드</button>
                     </div>
-                    <!--사진설명end-->
+                    <!--사진설명 end-->
                     
                 </form>
                 <!--사진업로드 Form-->
