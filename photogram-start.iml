@@ -16,6 +16,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" />
+          <factory-entry name="photogram-start" value="57a77ab6-8174-4618-949e-1ab785b34aa4" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

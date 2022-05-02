@@ -2,6 +2,7 @@ package com.cos.photogramstart.domain.user;
 
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.web.dto.user.UserUpdateDto;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -46,6 +47,7 @@ public class User {
     // Lazy = User 를 Select 할 때 해당 User id로 등록된 image 들을 가져오지마 - 대신 getImages() 함수의 image 들이 호출될 때 가져와!!
     // Eager = User 를 Select 할 때 해당 User id로 등록된 image 들을 전부 Join 해서 가져와!!
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"user"})
     private List<Image> images;
 
     private LocalDateTime createDate;
