@@ -1,19 +1,17 @@
 package com.cos.photogramstart.domain.image;
 
 import com.cos.photogramstart.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "image")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(of = {"id"})
+@Getter
+@ToString(exclude = "user")
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +23,13 @@ public class Image {
     @JoinColumn(name = "userId")
     @ManyToOne
     private User user;
+
+    @Builder
+    public Image(String caption, String postImageUrl, User user) {
+        this.caption = caption;
+        this.postImageUrl = postImageUrl;
+        this.user = user;
+    }
 
     // 이미지 좋아요
 
