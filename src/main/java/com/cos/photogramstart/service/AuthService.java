@@ -2,6 +2,7 @@ package com.cos.photogramstart.service;
 
 import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.domain.user.UserRepository;
+import com.cos.photogramstart.web.dto.auth.SignupDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,12 +16,13 @@ public class AuthService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional // Write(Insert, Update, Delete)
-    public User 회원가입(User user) {
+    public User 회원가입(SignupDto signupDto) {
         // 회원가입 진행
-        String rawPassword = user.getPassword();
+        String rawPassword = signupDto.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-        user.setPassword(encPassword);
-        user.setRole("ROLE_USER");
+
+        // User <- SignUp
+        User user = signupDto.toEntity(encPassword);
         User userEntity = userRepository.save(user);
 
         return userEntity;

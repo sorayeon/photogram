@@ -20,10 +20,10 @@ public class SignupDto {
     @NotBlank
     private String name;
 
-    public User toEntity() {
+    public User toEntity(String encPassword) {
         return User.builder()
                 .username(username)
-                .password(password)
+                .password(encPassword)
                 .email(email)
                 .name(name)
                 .build();

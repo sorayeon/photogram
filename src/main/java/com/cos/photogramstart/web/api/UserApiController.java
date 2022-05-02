@@ -40,7 +40,7 @@ public class UserApiController {
             }
             throw new CustomValidationApiException("유효성검증오류", errorMap);
         } else {
-            User userEntity = userService.회원수정(id, userUpdateDto.toEntity());
+            User userEntity = userService.회원수정(id, userUpdateDto);
 
             principalDetails.setUser(userEntity); // 세션정보 변경
 

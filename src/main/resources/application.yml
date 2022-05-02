@@ -19,7 +19,7 @@ spring:
     password: password1!
 
   jpa:
-    open-in-view: true
+    open-in-view: true # session 을 view 까지 가져옴 (DB Lazy loading jsp 에서 가능)
     hibernate:
       ddl-auto: update
       naming:

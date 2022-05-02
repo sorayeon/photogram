@@ -17,7 +17,9 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "caption", length = 150)
     private String caption; // 오늘 나 너무 피곤해
+    @Column(name = "postImageUrl", nullable = false, length = 150)
     private String postImageUrl; // 사진을 전송받아서 그 사진을 서버에 특정 폴더에 저장 - DB 에 그 저장된 경로를 insert
 
     @JoinColumn(name = "userId")

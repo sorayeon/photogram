@@ -49,11 +49,7 @@ public class AuthController {
         } else {
             // log.info("signup = {}", signupDto);
 
-            // User <- SignUp
-            User user = signupDto.toEntity();
-            // log.info("user = {}", user);
-
-            User userEntity = authService.회원가입(user);
+            User userEntity = authService.회원가입(signupDto);
             log.info("userEntity = {}", userEntity);
 
             return "auth/signin";

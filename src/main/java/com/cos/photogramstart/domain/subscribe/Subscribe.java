@@ -2,19 +2,14 @@ package com.cos.photogramstart.domain.subscribe;
 // 구독 테이블 유저 N : N 유저
 
 import com.cos.photogramstart.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(
         uniqueConstraints = {
                 @UniqueConstraint(
@@ -35,6 +30,12 @@ public class Subscribe {
     @JoinColumn(name = "toUserId")
     @ManyToOne
     private User toUser;
+
+    @Builder
+    public Subscribe(User fromUser, User toUser) {
+        this.fromUser = fromUser;
+        this.toUser = toUser;
+    }
 
     private LocalDateTime createDate;
 
