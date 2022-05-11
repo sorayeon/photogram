@@ -1,12 +1,13 @@
 package com.cos.photogramstart.domain.user;
 
+import com.cos.photogramstart.domain.common.BaseEntity;
+import com.cos.photogramstart.domain.common.BaseTimeEntity;
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.web.dto.user.UserUpdateDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 // JPA - Java Persistence API (자바로 데이터를 영구적으로 저장(DB)할 수 있는 API 를 제공)
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(of = {"id", "username"})
 @ToString(exclude = "images")
-public class User {
+public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 데이터베이스를 따라간다
     private Integer id;
@@ -50,8 +51,6 @@ public class User {
     @JsonIgnoreProperties({"user"})
     private List<Image> images;
 
-    private LocalDateTime createDate;
-
     @Builder
     public User(String username, String password, String name, String email, String role) {
         this.username = username;
@@ -61,10 +60,10 @@ public class User {
         this.role = "ROLE_USER";
     }
 
-    @PrePersist // 디비에 INSERT 되기 직전에 실행
-    public void createDate() {
-        this.createDate = LocalDateTime.now();
-    }
+//    @PrePersist // 디비에 INSERT 되기 직전에 실행
+//    public void createDate() {
+//        this.createDate = LocalDateTime.now();
+//    }
 
     public void updateMyAccount(UserUpdateDto dto) {
         this.name = dto.getName();

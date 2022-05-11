@@ -1,10 +1,10 @@
 package com.cos.photogramstart.domain.image;
 
+import com.cos.photogramstart.domain.common.BaseTimeEntity;
 import com.cos.photogramstart.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "image")
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = {"id"})
 @Getter
 @ToString(exclude = "user")
-public class Image {
+public class Image extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -36,11 +36,11 @@ public class Image {
     // 이미지 좋아요
 
     // 댓글
-
-    private LocalDateTime createDate;
-
-    @PrePersist
-    public void createDate() {
-        this.createDate = LocalDateTime.now();
-    }
+//
+//    private LocalDateTime createDate;
+//
+//    @PrePersist
+//    public void createDate() {
+//        this.createDate = LocalDateTime.now();
+//    }
 }

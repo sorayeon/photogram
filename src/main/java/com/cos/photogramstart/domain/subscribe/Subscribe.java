@@ -1,11 +1,14 @@
 package com.cos.photogramstart.domain.subscribe;
 // 구독 테이블 유저 N : N 유저
 
+import com.cos.photogramstart.domain.common.BaseTimeEntity;
 import com.cos.photogramstart.domain.user.User;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -18,7 +21,7 @@ import java.time.LocalDateTime;
                 )
         }
 )
-public class Subscribe {
+public class Subscribe extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -37,10 +40,4 @@ public class Subscribe {
         this.toUser = toUser;
     }
 
-    private LocalDateTime createDate;
-
-    @PrePersist
-    public void createDate() {
-        this.createDate = LocalDateTime.now();
-    }
 }
