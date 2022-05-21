@@ -14,7 +14,7 @@ function storyLoad() {
 		dataType: "json"
 	}).done(res => {
 		console.log(res);
-		res.data.forEach((image) => {
+		res.data.content.forEach((image) => {
 			const storyItem = getStoryItem(image);
 			$("#storyList").append(storyItem);
 		})
