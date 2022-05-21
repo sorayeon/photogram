@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,6 +25,12 @@ public class ImageService {
 
     @Value("${file.path}")
     private String uploadFolder;
+
+    @Transactional(readOnly = true) // X 영속성 컨텍스트 변경 감지해서, 더티체킹, flush(반영) X
+    public List<Image> 이미지스토리(int principalId) {
+        List<Image> images = imageRepository.mStory(principalId);
+        return images;
+    }
 
     @Transactional
     public void 사진업로드(ImageUploadDto imageUploadDto, PrincipalDetails principalDetails) {
