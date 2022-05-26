@@ -6,37 +6,14 @@
 <main class="popular">
 	<div class="exploreContainer">
 
-		<!--인기게시글 갤러리(GRID배치)-->
+		<!--인기게시글 갤러리(GRID 배치)-->
 		<div class="popular-gallery">
-
+			<c:forEach var="image" items="${images}">
 			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
+				<a href="/user/${image.user.id}"> <img src="/upload/${image.postImageUrl}" />
 				</a>
 			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
-			<div class="p-img-box">
-				<a href="/user/profile"> <img src="/images/home.jpg" />
-				</a>
-			</div>
+			</c:forEach>
 		</div>
 
 	</div>
