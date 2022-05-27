@@ -3,22 +3,34 @@ package com.cos.photogramstart.service;
 import com.cos.photogramstart.domain.subscribe.SubscribeRepository;
 import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.domain.user.UserRepository;
+import com.cos.photogramstart.handler.ex.CustomApiException;
 import com.cos.photogramstart.handler.ex.CustomException;
 import com.cos.photogramstart.handler.ex.CustomValidationApiException;
 import com.cos.photogramstart.web.dto.user.UserProfileDto;
 import com.cos.photogramstart.web.dto.user.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserRepository userRepository;
     private final SubscribeRepository subscribeRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Value("${file.path}")
+    private String uploadFolder;
 
     @Transactional(readOnly = true)
     public UserProfileDto 회원프로필(int pageUserId, int principalId) {
@@ -56,5 +68,30 @@ public class UserService {
         // 2. 영속화된 오브젝트를 수정 - 더티체킹
 
         return userEntity; // 더티체킹이 일어나서 업데이트가 완료됨
+    }
+
+    @Transactional
+    public User 회원프로필사진변경(int principalId, MultipartFile profileImageFile) {
+        UUID uuid = UUID.randomUUID();
+        String imageFileName = uuid + "_" + profileImageFile.getOriginalFilename(); // 1.jpg
+
+        log.info("이미지 파일이름 : {}", imageFileName);
+
+        Path imageFilePath = Paths.get(uploadFolder + imageFileName);
+
+        // 통신, I/O -> 예외가 발생할 수 있다.
+        try {
+            Files.write(imageFilePath, profileImageFile.getBytes());
+        } catch (Exception e) {
+            log.error("이미지 업로드 오류", e);
+        }
+
+        User userEntity = userRepository.findById(principalId).orElseThrow(() -> {
+            throw new CustomApiException("유저를 찾을 수 없습니다.");
+        });
+
+        userEntity.setProfileImageUrl(imageFileName);
+        // 더티체킹으로 업데이트 됨
+        return userEntity;
     }
 }

@@ -73,4 +73,8 @@ public class User extends BaseTimeEntity {
         this.phone = dto.getPhone();
         this.gender = dto.getGender();
     }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
 }
