@@ -4,6 +4,7 @@ import com.cos.photogramstart.domain.common.BaseEntity;
 import com.cos.photogramstart.domain.common.BaseTimeEntity;
 import com.cos.photogramstart.domain.image.Image;
 import com.cos.photogramstart.web.dto.user.UserUpdateDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class User extends BaseTimeEntity {
 
     @Column(length = 20, nullable = false, unique = true)
     private String username;
+    @JsonIgnore
     @Column(name = "password", length = 64, nullable = false)
     private String password;
     @Column(name = "name", length = 50, nullable = false)

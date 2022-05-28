@@ -30,6 +30,10 @@ public class Image extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    public Image(int id) {
+        this.id = id;
+    }
+
     @Builder
     public Image(String caption, String postImageUrl, User user) {
         this.caption = caption;
