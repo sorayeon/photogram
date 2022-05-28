@@ -179,7 +179,7 @@ function addComment(imageId) {
 		`;
 		commentList.prepend(content);
 	}).fail(error => {
-		console.log("에러", error);
+		alert(error.responseJSON.data.content);
 	});
 
 	commentInput.val(""); // 인풋 필드를 비워준다
