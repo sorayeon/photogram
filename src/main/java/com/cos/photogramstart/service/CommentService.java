@@ -36,7 +36,7 @@ public class CommentService {
     }
 
     @Transactional
-    public Comment 댓글삭제() {
-        return null;
+    public void 댓글삭제(int id) {
+        commentRepository.deleteById(id);
     }
 }
