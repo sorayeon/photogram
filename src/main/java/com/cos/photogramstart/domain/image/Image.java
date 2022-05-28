@@ -1,5 +1,6 @@
 package com.cos.photogramstart.domain.image;
 
+import com.cos.photogramstart.domain.comment.Comment;
 import com.cos.photogramstart.domain.common.BaseTimeEntity;
 import com.cos.photogramstart.domain.likes.Likes;
 import com.cos.photogramstart.domain.user.User;
@@ -7,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,7 +46,12 @@ public class Image extends BaseTimeEntity {
     // 이미지 좋아요
     @JsonIgnoreProperties({"image"})
     @OneToMany(mappedBy = "image")
-    private List<Likes> likes;
+    private List<Likes> likes = new ArrayList<>();
+
+    @OrderBy("id DESC")
+    @JsonIgnoreProperties({"image"})
+    @OneToMany(mappedBy = "image")
+    private List<Comment> comments = new ArrayList<>();
 
     @Transient // DB에 컬럼이 만들어지지 않는다.
     private boolean likeState;
