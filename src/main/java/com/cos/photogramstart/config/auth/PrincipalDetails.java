@@ -3,6 +3,7 @@ package com.cos.photogramstart.config.auth;
 import com.cos.photogramstart.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -56,4 +57,12 @@ public class PrincipalDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "PrincipalDetails{" +
+                "user=" + user +
+                '}';
+    }
+
 }
