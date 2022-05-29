@@ -36,5 +36,16 @@ spring:
 #      name: test
 #      password: 1234
 
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 1176245109881824
+            client-secret: d51cbcec0524193a2e7818320ade4402
+            scope:
+              - public_profile
+              - email
 file:
   path: /Users/sorayeon/IdeaProjects/upload/
+
