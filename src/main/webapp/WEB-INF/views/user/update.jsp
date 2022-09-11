@@ -13,7 +13,7 @@
 			<!--프로필셋팅 아이디영역-->
 			<div class="content-item__01">
 				<div class="item__img">
-					<img src="#" onerror="this.src='/images/person.jpeg'" />
+					<img src="#" onerror="this.src='<c:url value="/images/person.jpeg" />'" />
 				</div>
 				<div class="item__username">
 					<h2>${principal.user.username}</h2>
@@ -99,6 +99,6 @@
 	</section>
 </main>
 
-<script src="/js/update.js"></script>
+<script src="<c:url value="/js/update.js" />"></script>
 
 <%@ include file="../layout/footer.jsp"%>

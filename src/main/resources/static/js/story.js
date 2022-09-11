@@ -12,7 +12,7 @@ const principalId = $("#principalId").val();
 let page = 0;
 function storyLoad() {
 	$.ajax({
-		url: `/api/image?page=${page}`,
+		url: `/photogram/api/image?page=${page}`,
 		dataType: "json"
 	}).done(res => {
 		console.log(res);
@@ -31,14 +31,14 @@ function getStoryItem(image) {
 	let item = `<div class="story-list__item">
 	  <div class="sl__item__header">
 		<div>
-		  <img class="profile-image" src="/upload/${image.user.profileImageUrl}"
-			onerror="this.src='/images/person.jpeg'" />
+		  <img class="profile-image" src="/photogram/upload/${image.user.profileImageUrl}"
+			onerror="this.src='/photogram/images/person.jpeg'" />
 		</div>
 		<div>${image.user.username}</div>
 	  </div>
 	
 	  <div class="sl__item__img">
-		<img src="/upload/${image.postImageUrl}" />
+		<img src="/photogram/upload/${image.postImageUrl}" />
 	  </div>
 	
 	  <div class="sl__item__contents">
@@ -111,7 +111,7 @@ function toggleLike(imageId) {
 	if (likeIcon.hasClass("far")) { // 좋아요 하겠다
 		$.ajax({
 			type: "post",
-			url: `/api/image/${imageId}/likes`,
+			url: `/photogram/api/image/${imageId}/likes`,
 			dataType: "json"
 		}).done(res => {
 			const likeCountStr = $("#storyLikeCount-" + imageId).text();
@@ -126,7 +126,7 @@ function toggleLike(imageId) {
 	} else { // 좋아요 취소하겠다.
 		$.ajax({
 			type: "delete",
-			url: `/api/image/${imageId}/likes`,
+			url: `/photogram/api/image/${imageId}/likes`,
 			dataType: "json"
 		}).done(res => {
 			const likeCountStr = $("#storyLikeCount-" + imageId).text();
@@ -159,7 +159,7 @@ function addComment(imageId) {
 
 	$.ajax({
 		type: "post",
-		url: "/api/comment",
+		url: "/photogram/api/comment",
 		data: JSON.stringify(data),
 		contentType: "application/json; charset=utf-8",
 		dataType: "json"
@@ -189,7 +189,7 @@ function addComment(imageId) {
 function deleteComment(commentId) {
 	$.ajax({
 		type: "delete",
-		url: "/api/comment/" + commentId,
+		url: "/photogram/api/comment/" + commentId,
 		dataType: "json"
 	}).done(res => {
 		console.log("성공", res);

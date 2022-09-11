@@ -17,8 +17,8 @@
 						id="userProfileImageInput" />
 				</form>
 
-				<img class="profile-image" src="/upload/${dto.user.profileImageUrl}"
-					onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
+				<img class="profile-image" src="<c:url value="/upload/${dto.user.profileImageUrl}" />"
+					onerror="this.src='<c:url value="/images/person.jpeg" />'" id="userProfileImage" />
 			</div>
 		</div>
 		<!--유저이미지end-->
@@ -30,7 +30,7 @@
 
 				<c:choose>
 					<c:when test="${dto.pageOwnerState}">
-						<button class="cta" onclick="location.href='/image/upload'">사진등록</button>
+						<button class="cta" onclick="location.href='<c:url value="/image/upload" />'">사진등록</button>
 					</c:when>
 					<c:otherwise>
 						<c:choose>
@@ -78,7 +78,7 @@
 				<!--아이템들-->
 				<c:forEach var="image" items="${dto.user.images}"> <!-- EL 표현식 에서 변수명을 적으면 get 함수가 자동 호출된다 -->
 				<div class="img-box">
-					<a href=""> <img src="/upload/${image.postImageUrl}" />
+					<a href=""> <img src="<c:url value="/upload/${image.postImageUrl}" />" />
 					</a>
 					<div class="comment">
 						<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>
@@ -95,8 +95,8 @@
 <!--로그아웃, 회원정보변경 모달-->
 <div class="modal-info" onclick="modalInfo()">
 	<div class="modal">
-		<button onclick="location.href='/user/1/update'">회원정보 변경</button>
-		<button onclick="location.href='/logout'">로그아웃</button>
+		<button onclick="location.href='<c:url value="/user/1/update" />'">회원정보 변경</button>
+		<button onclick="location.href='<c:url value="/logout" />'">로그아웃</button>
 		<button onclick="closePopup('.modal-info')">취소</button>
 	</div>
 </div>
@@ -130,6 +130,6 @@
 </div>
 
 
-<script src="/js/profile.js"></script>
+<script src="<c:url value="/js/profile.js" />"></script>
 
 <%@ include file="../layout/footer.jsp"%>

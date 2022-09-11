@@ -7,7 +7,7 @@ function update(userId, event) {
 
     $.ajax({
         type: "put",
-        url: `/api/user/${userId}`,
+        url: `/photogram/api/user/${userId}`,
         data: data,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         dataType: "json"

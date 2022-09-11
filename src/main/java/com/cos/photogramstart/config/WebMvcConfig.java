@@ -1,6 +1,9 @@
 package com.cos.photogramstart.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -24,5 +27,11 @@ public class WebMvcConfig implements WebMvcConfigurer { // web 설정 파일
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver()); // 1시간 캐싱
 
+    }
+
+    @Bean
+    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
+        webServerFactoryCustomizer() {
+        return factory -> factory.setContextPath("/photogram");
     }
 }

@@ -13,6 +13,6 @@
 		</article>
 	</section>
 </main>
-<script src="/js/story.js"></script>
+<script src="<c:url value="/js/story.js" />"></script>
 </body>
 </html>
