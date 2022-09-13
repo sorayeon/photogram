@@ -29,9 +29,9 @@ public class WebMvcConfig implements WebMvcConfigurer { // web 설정 파일
 
     }
 
-    @Bean
-    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
-        webServerFactoryCustomizer() {
-        return factory -> factory.setContextPath("/photogram");
-    }
+//    @Bean
+//    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>
+//        webServerFactoryCustomizer() {
+//        return factory -> factory.setContextPath("/photogram");
+//    }
 }
