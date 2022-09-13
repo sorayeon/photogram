@@ -15,7 +15,7 @@ function toggleSubscribe(toUserId, obj) {
 	if ($(obj).text() === "구독취소") {
 		$.ajax({
 			type: "delete",
-			url: `/photogram/api/subscribe/${toUserId}`,
+			url: `/api/subscribe/${toUserId}`,
 			dataType: "json"
 		}).done(res => {
 			$(obj).text("구독하기");
@@ -26,7 +26,7 @@ function toggleSubscribe(toUserId, obj) {
 	} else {
 		$.ajax({
 			type: "post",
-			url: `/photogram/api/subscribe/${toUserId}`,
+			url: `/api/subscribe/${toUserId}`,
 			dataType: "json"
 		}).done(res => {
 			$(obj).text("구독취소");
@@ -43,7 +43,7 @@ function subscribeInfoModalOpen(pageUserId) {
 	$(".modal-subscribe").css("display", "flex");
 
 	$.ajax({
-		url: `/photogram/api/user/${pageUserId}/subscribe`,
+		url: `/api/user/${pageUserId}/subscribe`,
 		dataType: 'json'
 	}
 	).done(res => {
@@ -61,7 +61,7 @@ function subscribeInfoModalOpen(pageUserId) {
 function getSubscribeModalItem(u) {
 	let item = `<div class="subscribe__item" id="subscribeModalItem-${u.id}">
 		<div class="subscribe__img">
-			<img src="/photogram/upload/${u.profileImageUrl}" onerror="this.src='/photogram/images/person.jpeg'"/>
+			<img src="/upload/${u.profileImageUrl}" onerror="this.src='/images/person.jpeg'"/>
 		</div>
 		<div class="subscribe__text">
 			<h2>${u.username}</h2>
@@ -120,7 +120,7 @@ function profileImageUpload(pageUserId, principalId) {
 		const formData = new FormData(profileImageForm);
 		$.ajax({
 			type: "put",
-			url: `/photogram/api/user/${principalId}/profileImageUrl`,
+			url: `/api/user/${principalId}/profileImageUrl`,
 			data: formData,
 			contentType: false, // 필수 : x-www-form-urlencoded 로 파싱되는 것을 방지
 			processData: false, // 필수 : contentType 을 false 로 줬을 때, QueryString 자동 설정됨. 해제
