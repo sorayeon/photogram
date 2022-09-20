@@ -14,7 +14,7 @@ spring:
       
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.10.103:5432/photogram
+    url: jdbc:postgresql://192.168.45.245:5432/photogram
     username: postgres
     password: gate33##
 
