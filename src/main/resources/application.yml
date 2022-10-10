@@ -20,11 +20,12 @@ spring:
 
   jpa:
     open-in-view: true # session 을 view 까지 가져옴 (DB Lazy loading jsp 에서 가능)
+    generate-ddl: false
     hibernate:
       ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    show-sql: true
+#    show-sql: true
       
   servlet:
     multipart:
@@ -47,3 +48,13 @@ file:
 jasypt:
   encryptor:
     bean: jasyptEncryptor
+
+logging:
+  level:
+    p6spy: info
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+      logging: slf4j

@@ -93,6 +93,9 @@
     <orderEntry type="library" name="Maven: com.github.ulisesbocchio:jasypt-spring-boot:3.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.3" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.70" level="project" />
+    <orderEntry type="library" name="Maven: com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.github.gavlyukovskiy:datasource-decorator-spring-boot-autoconfigure:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: p6spy:p6spy:3.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-oauth2-client:2.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.5" level="project" />
