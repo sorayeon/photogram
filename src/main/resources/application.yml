@@ -14,9 +14,9 @@ spring:
       
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.45.245:5432/photogram
-    username: postgres
-    password: gate33##
+    url: ENC(pJEm2a2/QHVL6jBg46SUQ8k2ihEozMiFAo7Wlf7veMx+oQr88orJIWAxX+MbxcZrwlo5Yu8+akegYmpWozWZ40D5rD09xwP0hZ8bQ4iUbqILr6/U11iEbQtBrUVMXjNgf0dK5daEoJOHVGD/qUwuHQ==)
+    username: ENC(4HDZRy3PIhqJMk+CTOC+D9igCB5bbTwH4V/dOSAEvVA=)
+    password: ENC(utJVSeufj39cW771obXKrO3dvsWe6BRKKxgOXRX99+Y=)
 
   jpa:
     open-in-view: true # session 을 view 까지 가져옴 (DB Lazy loading jsp 에서 가능)
@@ -31,21 +31,19 @@ spring:
       enabled: true
       max-file-size: 2MB
 
-#  security:
-#    user:
-#      name: test
-#      password: 1234
-
   security:
     oauth2:
       client:
         registration:
           facebook:
-            client-id: 1176245109881824
-            client-secret: d51cbcec0524193a2e7818320ade4402
+            client-id: ENC(Nt2m+5FGBQn7cNPQOtwTICdvZbJUTE7LBpzS0eHkM+nBlEnMk6/KZrGQpLerdaBA)
+            client-secret: ENC(RNeCYf9spgHLJA/JEHxq3Pa/K+YfJDsgAVkdxmm2biN67wptDDcJfM4zJ3GX7QwCzMVcsZuVUCdnHALViW5xZw==)
             scope:
               - public_profile
               - email
 file:
   path: /Users/sorayeon/IdeaProjects/upload/
 
+jasypt:
+  encryptor:
+    bean: jasyptEncryptor
