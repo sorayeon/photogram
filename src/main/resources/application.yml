@@ -14,9 +14,9 @@ spring:
       
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ENC(pJEm2a2/QHVL6jBg46SUQ8k2ihEozMiFAo7Wlf7veMx+oQr88orJIWAxX+MbxcZrwlo5Yu8+akegYmpWozWZ40D5rD09xwP0hZ8bQ4iUbqILr6/U11iEbQtBrUVMXjNgf0dK5daEoJOHVGD/qUwuHQ==)
-    username: ENC(4HDZRy3PIhqJMk+CTOC+D9igCB5bbTwH4V/dOSAEvVA=)
-    password: ENC(utJVSeufj39cW771obXKrO3dvsWe6BRKKxgOXRX99+Y=)
+    url: ENC(HPGZV2mM0ibboAlqTxcRE/sBrlOb0Q1WvhjMpG7ftBvt+iE7BRPm9DO/ebClElmxk/X69bn7JWXLVWjazpXiRHttPU8uEd50RA6MvS7FnXjK13a8N0ovI8WuPxvSljwgArPpd6dAY2chZg0wr6Lerw==)
+    username: ENC(/7IxM4uCpC1YozPmDzq5YolGq6gaHgwNCm3i3gBVk4c=)
+    password: ENC(3OjmvdOEWVB5WoRDm0xOr97xOZBSZWgYV87xUvrkbZE=)
 
   jpa:
     open-in-view: true # session 을 view 까지 가져옴 (DB Lazy loading jsp 에서 가능)
