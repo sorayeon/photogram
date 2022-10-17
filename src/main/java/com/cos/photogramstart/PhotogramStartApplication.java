@@ -10,13 +10,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class PhotogramStartApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PhotogramStartApplication.class, args);
-	}
+    static {
+        System.setProperty("com.amazonaws.sdk.disableEc2Metadata", "true");
+    }
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(PhotogramStartApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PhotogramStartApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(PhotogramStartApplication.class);
+    }
 
 }
