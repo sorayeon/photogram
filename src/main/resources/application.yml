@@ -14,9 +14,9 @@ spring:
       
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ENC(HPGZV2mM0ibboAlqTxcRE/sBrlOb0Q1WvhjMpG7ftBvt+iE7BRPm9DO/ebClElmxk/X69bn7JWXLVWjazpXiRHttPU8uEd50RA6MvS7FnXjK13a8N0ovI8WuPxvSljwgArPpd6dAY2chZg0wr6Lerw==)
-    username: ENC(/7IxM4uCpC1YozPmDzq5YolGq6gaHgwNCm3i3gBVk4c=)
-    password: ENC(3OjmvdOEWVB5WoRDm0xOr97xOZBSZWgYV87xUvrkbZE=)
+    url: ENC(78hlc2cJdAw5Lgw37j8w7zuWlSWXSq5vaQfuds3n5b6PShL6oOabvBa1vPkDOF8Cs+hr8vf7EeAdBRamWIC89/WMGNJTe/sVVJHI4inNLlaPS4E4yyhEsjF3BnBhvSIayTqOw736Z7t3HyxHRqjBdQ==)
+    username: ENC(4aGcJI+ATyrHsG5kkl3s9So5RmpC2a5jW6EQaQoV3AM=)
+    password: ENC(rv6ZLH9Ufopo7EgkTEzPSwAbu9357Z/0vgbNmBvdrso=)
 
   jpa:
     open-in-view: true # session 을 view 까지 가져옴 (DB Lazy loading jsp 에서 가능)
@@ -30,31 +30,50 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 2MB
+      max-file-size: 10MB
+      max-request-size: 10MB
 
   security:
     oauth2:
       client:
         registration:
           facebook:
-            client-id: ENC(Nt2m+5FGBQn7cNPQOtwTICdvZbJUTE7LBpzS0eHkM+nBlEnMk6/KZrGQpLerdaBA)
-            client-secret: ENC(RNeCYf9spgHLJA/JEHxq3Pa/K+YfJDsgAVkdxmm2biN67wptDDcJfM4zJ3GX7QwCzMVcsZuVUCdnHALViW5xZw==)
+            client-id: ENC(TJQzvcHzjslhKj5uch3OZvTC1gqAUz0vMGaWVjKdB93xuA65Goat/NdhMBy1o34w)
+            client-secret: ENC(9vBAyWerJa8faGb/FSw5yzUKpZFIz1R/4AWRmNnUatjLXtDRvf9rhtR+iZsbqmrrO8ZeEyV+iFzcIApC6s2lFg==)
             scope:
               - public_profile
               - email
-file:
-  path: /Users/sorayeon/IdeaProjects/upload/
 
 jasypt:
   encryptor:
     bean: jasyptEncryptor
 
+file:
+  path: ~/IdeaProjects/upload/
+
 logging:
   level:
     p6spy: info
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: ERROR
 
 decorator:
   datasource:
     p6spy:
       enable-logging: true
       logging: slf4j
+
+cloud:
+  aws:
+    s3:
+      bucket: mydata-s3
+    credentials:
+      accessKey: ENC(oCOXcezZ1wWeapCnraFM+S+BwVWCybRq4YhGueV6jnuK8XaqnPAZpx5qwxd09BWQ)
+      secretKey: ENC(zOfcwu9QxEZsyd5guUXcjUSyjoNBxW+IBS8cRpVg5UQ5Kl8+Mt53WCzXDFTzjciGU9KgctL+0m9kCsZMqDZKyA==)
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
