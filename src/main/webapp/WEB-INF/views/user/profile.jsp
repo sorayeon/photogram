@@ -17,7 +17,7 @@
 						id="userProfileImageInput" />
 				</form>
 
-				<img class="profile-image" src="<c:url value="/upload/${dto.user.profileImageUrl}" />"
+				<img class="profile-image" src="<c:url value="${dto.user.profileImageUrl}" />"
 					onerror="this.src='<c:url value="/images/person.jpeg" />'" id="userProfileImage" />
 			</div>
 		</div>
@@ -78,7 +78,7 @@
 				<!--아이템들-->
 				<c:forEach var="image" items="${dto.user.images}"> <!-- EL 표현식 에서 변수명을 적으면 get 함수가 자동 호출된다 -->
 				<div class="img-box">
-					<a href=""> <img src="<c:url value="/upload/${image.postImageUrl}" />" />
+					<a href=""> <img src="<c:url value="${image.postImageUrl}" />" />
 					</a>
 					<div class="comment">
 						<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>
